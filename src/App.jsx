@@ -16,7 +16,7 @@ function App() {
 
             <button
                 onClick={() => {
-                    api.get("/john%203:16?translation=almeida")
+                    api.get(`/${book}%20${chapter}:${verse}?translation=almeida`)
                         .then((response) => setResult(response.data))
                         .catch((err) => {
                             console.error("ops! ocorreu um erro" + err);
