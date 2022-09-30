@@ -1,16 +1,21 @@
 {
   "name": "randomverse",
+  "description": "Gerador de versículos bíblicos aleatórios usando https://bible-api.com/",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index.js",
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "MatheusSousa5068",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.27.2",
     "express": "^4.18.1",
     "nodemon": "^2.0.20"
+  },
+  "engines": {
+    "node": "16.14.0"
   }
 }
