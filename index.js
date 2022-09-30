@@ -1,29 +1,34 @@
-const api = require("./api")
+const express = require("express");
+const app = express();
 
-const books = require('./books.json')
+const api = require("./api");
 
-// Exemplo de sintaxe
-const gerar = async () => {
-    let randomBook = Math.floor(Math.random() * 66 + 1);
-    let book = books[randomBook]
+const books = require("./books.json");
 
+app.use(express.json());
 
+app.get("/", async (req, res) => {
+    let randomBook = await Math.floor(Math.random() * 66 + 1);
+    let book = await books[randomBook];
 
-    let randomChapter = Math.floor(Math.random() * book.chapters + 1);
-
+    let randomChapter = await Math.floor(Math.random() * book.chapters + 1);
 
     await api
         .get(`/${book.name}%20${randomChapter}`)
         .then((response) => {
-            let randomVerse = Math.floor(Math.random() * response.data.verses.length + 1);
-            console.log(book.name, randomChapter)
-            console.log(randomVerse)
-            console.log(response.data.verses[randomVerse - 1])
+            let randomVerse = Math.floor(
+                Math.random() * response.data.verses.length + 1
+            );
+            console.log(book.name, randomChapter);
+            console.log(randomVerse);
+            console.log(response.data.verses[randomVerse - 1]);
+
+            res.json(response.data.verses[randomVerse - 1]);
         })
         .catch((err) => {
-            console.error("ops! ocorreu um erro" + err);
+            res.send("Algo deu errado");
         });
+});
 
-};
 
-gerar()
+app.listen(3030);
