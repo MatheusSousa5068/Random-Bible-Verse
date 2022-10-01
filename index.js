@@ -1,6 +1,8 @@
 const express = require("express");
 const app = express();
 
+const port = process.env.PORT || 3030;
+
 const api = require("./api");
 
 const books = require("./books.json");
@@ -30,5 +32,6 @@ app.get("/", async (req, res) => {
         });
 });
 
-
-app.listen(3030);
+app.listen(port, () => {
+    console.info("Server is running at port 3030");
+});
