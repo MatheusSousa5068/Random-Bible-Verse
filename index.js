@@ -19,9 +19,6 @@ app.get("/", async (req, res) => {
             let randomVerse = Math.floor(
                 Math.random() * response.data.verses.length + 1
             );
-            console.log(book.name, randomChapter);
-            console.log(randomVerse);
-            console.log(response.data.verses[randomVerse - 1]);
 
             res.json(response.data.verses[randomVerse - 1]);
         })
